@@ -32,3 +32,7 @@ db.on('error', function (err) {
 db.once('open', function () {
   console.log('Mongoose connection successful.');
 });
+
+app.listen(PORT, function() {
+  console.log("App listening on PORT: " + PORT);
+});
