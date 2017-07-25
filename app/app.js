@@ -1,8 +1,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const Main = require('./Components/Main')
 
-// The Main Component
-const Main = require('./components/Main')
-
-// render Main
-ReactDOM.render(<Main />, document.getElementById('app'));
+// Render Main in App
+ReactDOM.render(
+	<Main />, document.getElementById('app')
+)

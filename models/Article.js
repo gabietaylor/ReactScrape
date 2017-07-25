@@ -1,27 +1,27 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-
-var ArticleSchema = new Schema({
+const ArticleSchema = new Schema({
   title: {
     type: String,
     trim: true,
     required: "Title is Required"
   },
   date: {
-  	type: Date,
-  	default: Date.now,
-  	required: "Date is Required"
+    type: Date,
+    default: Date.now,
+    required: "Date is Required"
   },
   url: {
-  	type: String,
-  	required: true,
-  	required: "URL is Required",
-  	unique: true
+    type: String,
+    required: true,
+    required: "URL is Required",
+    unique: true
   }
 });
 
-// Model Created
-var Article = mongoose.model('Article', ArticleSchema);
+// Model Article Created
+const Article = mongoose.model('Article', ArticleSchema);
 
+// Export Article
 module.exports = Article;
