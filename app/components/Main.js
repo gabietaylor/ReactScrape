@@ -93,12 +93,13 @@ const Main = React.createClass({
 													   'backgroundPosition': 'center',
 													   'backgroundOrigin': 'border-box', 
 													   'backgroundSize': '100% 100%'}}>
-					<h2 className="text-center" style={{'color': 'white', 
+					<h2 className="text-center" style={{'color': '#4169E1', 
 													    'textShadow': '3px 3px 10px black', 
-														'fontSize': '54px'}}>NYTs Article Search & Save</h2>
+														'fontSize': '68px'}}>NYTs Article Scrape 2.0</h2>
+														<br/>
 					<p className="text-center" style={{'color': 'white', 
 													   'textShadow': '3px 3px 10px black', 
-													   'fontSize': '24px'}}>Search For & Save Articles You Deem Important!</p>
+													   'fontSize': '32px'}}>Search, Save, & Delete Articles!</p>
 					</div>
 				</div>
 				<div className="row">
