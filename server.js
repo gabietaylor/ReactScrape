@@ -18,8 +18,8 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 app.use(express.static('./public'));
 
-mongoose.connect('mongodb://localhost/nytscrape');
-// mongoose.connect('mongodb://heroku_8pldnxjq:p6osc1v3to3i093kchl9cj4e63@ds125053.mlab.com:25053/heroku_8pldnxjq');
+// mongoose.connect('mongodb://localhost/nytscrape');
+mongoose.connect('mongodb://heroku_8pldnxjq:p6osc1v3to3i093kchl9cj4e63@ds125053.mlab.com:25053/heroku_8pldnxjq');
 
 const db = mongoose.connection;
 
