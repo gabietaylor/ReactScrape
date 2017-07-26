@@ -24,7 +24,7 @@ const Main = React.createClass({
 	},	
 
 	// Allow child to update the parent w/ searchTerms
-	setTerm: function(tpc, stYr, endYr){
+	setParams: function(tpc, stYr, endYr){
 		this.setState({
 			topic: tpc,
 			startYear: stYr,
@@ -103,7 +103,7 @@ const Main = React.createClass({
 					</div>
 				</div>
 				<div className="row">
-					<Form setTerm={this.setTerm}/>
+					<Form setParams={this.setParams}/>
 				</div>
 				<div className="row">
 		

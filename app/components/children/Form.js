@@ -21,7 +21,7 @@ const Form = React.createClass({
 	// Handle Search Term
 	handleClick: function(){
 		// Parent Search Term
-		this.props.setTerm(this.state.topic, this.state.startYear, this.state.endYear);
+		this.props.setParams(this.state.topic, this.state.startYear, this.state.endYear);
 	},
 	// Render HTML
 	render: function(){

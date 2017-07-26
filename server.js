@@ -18,8 +18,8 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 app.use(express.static('./public'));
 
-// mongoose.connect('mongodb://localhost/nytreact');
-mongoose.connect('mongodb://heroku_8pldnxjq:p6osc1v3to3i093kchl9cj4e63@ds125053.mlab.com:25053/heroku_8pldnxjq');
+mongoose.connect('mongodb://localhost/nytscrape');
+// mongoose.connect('mongodb://heroku_8pldnxjq:p6osc1v3to3i093kchl9cj4e63@ds125053.mlab.com:25053/heroku_8pldnxjq');
 
 const db = mongoose.connection;
 
@@ -28,14 +28,15 @@ db.on('error', function (err) {
 });
 
 db.once('open', function () {
-  console.log('Mongoose connection successful.');
+  console.log('Successful mongoose connection.');
 });
 
 // Routes
+// Sends everything to html
 app.get('/', function(req, res){
   res.sendFile('./public/index.html');
 })
-
+// Gets Articles
 app.get('/api/saved', function(req, res) {
   Article.find({})
     .exec(function(err, doc){
@@ -46,7 +47,7 @@ app.get('/api/saved', function(req, res) {
       }
     })
 });
-
+// Post Article
 app.post('/api/saved', function(req, res){
   const newArticle = new Article({
     title: req.body.title,
@@ -63,15 +64,14 @@ app.post('/api/saved', function(req, res){
     }
   });
 });
-
+// Delete Article
 app.delete('/api/saved/:id', function(req, res){
   Article.find({'_id': req.params.id}).remove()
     .exec(function(err, doc) {
       res.send(doc);
   });
 });
-
 // Listening on Port
 app.listen(PORT, function() {
-  console.log("App listening on PORT: " + PORT);
+  console.log("Listening on " + PORT);
 });

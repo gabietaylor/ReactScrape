@@ -23112,7 +23112,7 @@ var Main = React.createClass({
 	},
 
 	// Allow child to update the parent w/ searchTerms
-	setTerm: function setTerm(tpc, stYr, endYr) {
+	setParams: function setParams(tpc, stYr, endYr) {
 		this.setState({
 			topic: tpc,
 			startYear: stYr,
@@ -23201,7 +23201,7 @@ var Main = React.createClass({
 			React.createElement(
 				'div',
 				{ className: 'row' },
-				React.createElement(Form, { setTerm: this.setTerm })
+				React.createElement(Form, { setParams: this.setParams })
 			),
 			React.createElement(
 				'div',
@@ -24120,7 +24120,7 @@ var Form = React.createClass({
 	// Handle Search Term
 	handleClick: function handleClick() {
 		// Parent Search Term
-		this.props.setTerm(this.state.topic, this.state.startYear, this.state.endYear);
+		this.props.setParams(this.state.topic, this.state.startYear, this.state.endYear);
 	},
 	// Render HTML
 	render: function render() {
@@ -24220,14 +24220,14 @@ var Results = React.createClass({
 		};
 	},
 	// Save Article w/ Clicks
-	clickToSave: function clickToSave(result) {
+	saveClick: function saveClick(result) {
 		this.props.saveArticle(result.headline.main, result.pub_date, result.web_url);
 	},
 	// Results Child recieve Props
 	componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 		var that = this;
 		var myResults = nextProps.results.map(function (search, i) {
-			var boundClick = that.clickToSave.bind(that, search);
+			var stickClick = that.saveClick.bind(that, search);
 			return React.createElement(
 				"div",
 				{ className: "list-group-item", key: i },
@@ -24241,7 +24241,7 @@ var Results = React.createClass({
 				React.createElement("br", null),
 				React.createElement(
 					"button",
-					{ type: "button", className: "btn btn-primary", style: { 'float': 'right', 'marginTop': '-39px' }, onClick: boundClick },
+					{ type: "button", className: "btn btn-primary", style: { 'float': 'right', 'marginTop': '-39px' }, onClick: stickClick },
 					"Save"
 				)
 			);
@@ -24298,7 +24298,7 @@ var Saved = React.createClass({
 		};
 	},
 	// Delete Article w/ Clicks	
-	clickToDelete: function clickToDelete(result) {
+	deleteClick: function deleteClick(result) {
 		this.props.deleteArticle(result);
 	},
 	// Saved Child recieve Props
@@ -24306,7 +24306,7 @@ var Saved = React.createClass({
 		var that = this;
 		console.log(nextProps);
 		var myResults = nextProps.savedArticles.map(function (search, i) {
-			var boundClick = that.clickToDelete.bind(that, search);
+			var stickClick = that.deleteClick.bind(that, search);
 			return React.createElement(
 				"div",
 				{ className: "list-group-item", key: i },
@@ -24320,7 +24320,7 @@ var Saved = React.createClass({
 				React.createElement("br", null),
 				React.createElement(
 					"button",
-					{ type: "button", className: "btn btn-danger", style: { 'float': 'right', 'marginTop': '-39px' }, onClick: boundClick },
+					{ type: "button", className: "btn btn-danger", style: { 'float': 'right', 'marginTop': '-39px' }, onClick: stickClick },
 					"Delete"
 				)
 			);

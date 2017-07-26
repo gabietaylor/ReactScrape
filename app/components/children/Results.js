@@ -12,18 +12,18 @@ const Results = React.createClass({
 		}
 	},
 	// Save Article w/ Clicks
-	clickToSave: function(result){
+	saveClick: function(result){
 		this.props.saveArticle(result.headline.main, result.pub_date, result.web_url);
 	},
 	// Results Child recieve Props
 	componentWillReceiveProps: function(nextProps){
 		const that = this;
 		const myResults = nextProps.results.map(function(search, i){
-		const boundClick = that.clickToSave.bind(that, search);
+		const stickClick = that.saveClick.bind(that, search);
 			return <div className="list-group-item" key={i}>
 				   <a href={search.web_url} target="_blank">{search.headline.main}</a>
 				   <br />{search.pub_date}<br />
-				   <button type="button" className="btn btn-primary" style={{'float': 'right', 'marginTop': '-39px'}} onClick={boundClick}>Save</button>
+				   <button type="button" className="btn btn-primary" style={{'float': 'right', 'marginTop': '-39px'}} onClick={stickClick}>Save</button>
 				   </div>
 		});
 		this.setState({results: myResults});

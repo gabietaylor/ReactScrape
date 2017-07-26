@@ -9,20 +9,19 @@ const Saved = React.createClass({
 		}
 	},
 	// Delete Article w/ Clicks	
-	clickToDelete: function(result){
+	deleteClick: function(result){
 		this.props.deleteArticle(result);
-
 	},
 	// Saved Child recieve Props
 	componentWillReceiveProps: function(nextProps){
 		const that = this;
 		console.log(nextProps);
 		const myResults = nextProps.savedArticles.map(function(search, i){
-			const boundClick = that.clickToDelete.bind(that, search);
+			const stickClick = that.deleteClick.bind(that, search);
 			return <div className="list-group-item" key={i}>
 				   <a href={search.url} target="_blank">{search.title}</a>
 				   <br />{search.date}<br />
-				   <button type="button" className="btn btn-danger" style={{'float': 'right', 'marginTop': '-39px'}} onClick={boundClick}>Delete</button>
+				   <button type="button" className="btn btn-danger" style={{'float': 'right', 'marginTop': '-39px'}} onClick={stickClick}>Delete</button>
 				   </div>
 		});
 		this.setState({savedArticles: myResults});
