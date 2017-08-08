@@ -3,8 +3,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-
-const Article = require('./models/Article.js');
+// Require Models
+const Admins = require('./models/Admins.js');
+const Users = require('./models/Users.js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,7 +20,7 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 app.use(express.static('./public'));
 
 // mongoose.connect('mongodb://localhost/nytscrape');
-mongoose.connect('mongodb://heroku_8pldnxjq:p6osc1v3to3i093kchl9cj4e63@ds125053.mlab.com:25053/heroku_8pldnxjq');
+mongoose.connect('mongodb://');
 
 const db = mongoose.connection;
 
